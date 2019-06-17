@@ -9,16 +9,16 @@ import java.util.Random;
 public class MainUtils2 {
 
 //	获取最小最大区间的随机数
-	public static int getRandomNum(int max, int min) {
-		int floor = (int) Math.floor(Math.random()*(max - min -1) + max + min + 1);
+	public static int getRandomNum(int min, int max) {
+		int floor = (int) Math.floor(Math.random() * (max - min -1) + min +1);
 		return floor;
 	}
 	
 //	获取最 小最大区间多个不重复随机数
-	public static int[] getRandomNums(int max, int min, int count) {
+	public static int[] getRandomNums(int min, int max, int count) {
 		int num[] = new int [count];
 		for (int i = 0; i < count; i++) {
-			int r = (int) Math.floor(Math.random() * (max - min -1) + max + min + 1);
+			int r = (int) Math.floor(Math.random() * (max - min -1) + min +1);
 			Boolean f = true;
 			for (int j = 0; j < num.length; j++) {
 				if (num[j] == r) {
@@ -37,18 +37,20 @@ public class MainUtils2 {
 	
 //	判断源字符串是否有值，空引号(空白字符串) 也算没值
 	public static Boolean isEmpty(String src) {
-		if (src.length() == 0 || "".equals(src) || src == null) {
+		if (src == null || src.length() == 0 || "".equals(src)) {
 			return false;
+		} else {
+			return true;
 		}
-		return true;
 	}
 	
 //	判断源字符串是否有值，空引号(空白字符串)和空格也算没值
 	public static Boolean isTrimEmpty(String src) {
-		if (src.trim().length() == 0 || "".equals(src.trim()) || src == null) {
+		if (src == null || src.trim().length() == 0 || "".equals(src.trim())) {
 			return false;
+		} else {
+			return true;
 		}
-		return true;
 	}
 	
 //	获取 1个 1-9,a-Z之间的随机字符
@@ -65,7 +67,7 @@ public class MainUtils2 {
 		Random random = new Random();
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < count; i++) {
-			buffer.append(random.nextInt(str.length()));
+			buffer.append(str.charAt(random.nextInt(str.length())));
 		}
 		return buffer.toString();
 	}
@@ -90,9 +92,10 @@ public class MainUtils2 {
 				"陈","褚","卫","蒋","沈","韩","杨","朱","秦","尤","许","何",
 				"吕","施","张","孔","曹","严","华"};
 		Random random = new Random();
+		
 		int abs = Math.abs(random.nextInt(string.length));
-		String name = string[abs];
+		String string2 = string[abs];
 		String chineseCode = MainUtils2.getChineseCode(count);
-		return chineseCode + name;
+		return string2 + chineseCode;
 	}
 }
